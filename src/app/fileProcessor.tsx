@@ -1,16 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import useSWR from 'swr';
+import { IFileData } from './interfaces/Interfaces';
 
 type ISortOptions = {
-  id: Number;
-  name: String;
-  value: String;
+  id: number;
+  name: string;
+  value: string;
 };
-
-type IFileData = {
-  createdAt: String;
-  name: String;
-}
 
 const sortOptions: ISortOptions[] = [
   { id: 1, name: 'Created At (Asc)', value: 'created' },
@@ -28,12 +24,6 @@ export default function FileProcessor() {
     `/api/data?sort=${selectedSort.value}`,
     fetcher
   );
-
-  useEffect(() => {
-        if (isLoading) {
-                console.log('Loaded now', files);
-        }
-  }, [isLoading])
 
   const handleSortChange = (option: ISortOptions) => {
     setSelectedSort(option);
@@ -86,10 +76,10 @@ export default function FileProcessor() {
           <div>Error loading files.</div>
         ) : (
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {files?.data?.length > 0 ? files.data.map((file: IFileData, index: Number) => (
+            {files?.data?.length > 0 ? files.data.map((file: IFileData, index: number) => (
               <li key={String(index)} className="col-span-1 rounded-lg bg-gray-800 shadow p-4">
                 <div className="text-sm text-gray-400">{file.createdAt}</div>
-                <div className="mt-1 text-lg font-medium text-white">{file.name}</div>
+                <div className="mt-1 text-lg font-medium text-white">{file.filename}</div>
               </li>
             )) : 'No matching files'}
           </ul>
