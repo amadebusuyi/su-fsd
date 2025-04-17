@@ -4,7 +4,18 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Repository
 
-ou can find the source code in the [GitHub repository](https://github.com/amadebusuyi/su-fsd)
+You can find the source code in the [GitHub repository](https://github.com/amadebusuyi/su-fsd)
+
+## Environments
+
+The internal and demo environments are only available to members of the same team on Vercel
+
+- **QA environment** for internal testing:
+  - **URL**: https://su-fsd-git-qa-merchros-projects.vercel.app
+- **Demo/Stage environment** for external review:
+  - **URL**: https://su-fsd-git-staging-merchros-projects.vercel.app
+- Finally, deploy to **Production**:
+  - **URL**: https://su-fsd-tau.vercel.app
 
 ## Description
 
