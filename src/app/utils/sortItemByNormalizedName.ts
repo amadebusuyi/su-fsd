@@ -1,19 +1,16 @@
-type SortOrder = 'asc' | 'desc';
+import { IFileData } from "../interfaces/Interfaces";
 
-interface Item {
-  name: string;
-  createdAt: string; // or Date if it's already a Date object
-}
+type SortOrder = 'asc' | 'desc';
 
 // Replace all digit sequences with their number-equivalent (remove leading zeros)
 function normalizeString(str: string): string {
   return str.replace(/\d+/g, (match) => parseInt(match, 10).toString());
 }
 
-export default function sortItemsByNormalizedName(input: Item[], order: SortOrder = 'asc'): Item[] {
+export default function sortItemsByNormalizedName(input: IFileData[], order: SortOrder = 'asc'): IFileData[] {
   return [...input].sort((a, b) => {
-    const normA = normalizeString(a.name);
-    const normB = normalizeString(b.name);
+    const normA = normalizeString(a.filename);
+    const normB = normalizeString(b.filename);
 
     return order === 'asc'
       ? normA.localeCompare(normB, undefined, { numeric: true })
